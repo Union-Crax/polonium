@@ -107,6 +107,17 @@ export default function ExpiryCountdown() {
             This website is no longer maintained and the domain will expire soon.
           </h1>
 
+          <div className="flex flex-col items-center space-y-4">
+            <p className="text-lg text-white mb-2">The project continues at our new home:</p>
+            <Button
+              onClick={() => (window.location.href = "https://union-crax.xyz")}
+              className="bg-white hover:bg-gray-200 text-black font-bold py-3 px-8 rounded-lg text-lg transition-all"
+              size="lg"
+            >
+              Redirect to UC
+            </Button>
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-2xl">
             {[
               { label: "Days", value: timeLeft.days },
@@ -122,13 +133,6 @@ export default function ExpiryCountdown() {
               </Card>
             ))}
           </div>
-
-          <Button
-            onClick={() => (window.location.href = "https://union-crax.xyz")}
-            className="bg-white hover:bg-gray-200 text-black font-bold py-3 px-8 rounded-lg text-lg transition-all"
-          >
-            Redirect to UC
-          </Button>
 
           <div className="mt-16 pt-8 border-t border-gray-800 w-full">
             <p className="text-gray-300 mb-6 text-lg">It was nice while it lasted</p>
@@ -150,4 +154,3 @@ export default function ExpiryCountdown() {
     </div>
   )
 }
-
