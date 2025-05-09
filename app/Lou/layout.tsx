@@ -2,8 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Lou",
-  description: "Learn more about Lou",
+  title: "Lou's Profile",
+  description: "Personal profile page for Lou",
 }
 
 export default function LouLayout({

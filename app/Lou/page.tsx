@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import Image from "next/image"
 import { Play } from "lucide-react"
 
 export default function LouProfile() {
@@ -16,39 +15,30 @@ export default function LouProfile() {
   }
 
   useEffect(() => {
+    // Preload the video
     if (videoRef.current) {
       videoRef.current.load()
     }
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white">
-      {/* Banner Image */}
-      <div
-        className="w-full"
-        style={{
-          height: "240px",
-          backgroundImage: 'url("https://files.catbox.moe/jcsjil.gif")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-40"></div>
+    <div className="min-h-screen bg-[#1e1f22] text-white">
+      {/* Banner Image - GIF */}
+      <div className="w-full h-60 relative overflow-hidden">
+        <img
+          src="https://files.catbox.moe/jcsjil.gif"
+          alt="Banner"
+          className="w-full h-full object-cover"
+          style={{ width: "100%", height: "240px" }}
+        />
       </div>
 
       {/* Profile Content */}
-      <div className="max-w-4xl mx-auto px-6 relative">
-        {/* Profile Picture */}
+      <div className="max-w-5xl mx-auto px-6 relative">
+        {/* Profile Picture - GIF */}
         <div className="absolute -top-24 left-8">
-          <div className="rounded-full border-8 border-[#121212] overflow-hidden h-48 w-48 shadow-lg">
-            <Image
-              src="https://files.catbox.moe/7s20w2.gif"
-              alt="Lou's Profile Picture"
-              width={192}
-              height={192}
-              className="w-full h-full object-cover"
-            />
+          <div className="rounded-full border-8 border-[#1e1f22] overflow-hidden h-48 w-48 shadow-lg">
+            <img src="https://files.catbox.moe/7s20w2.gif" alt="Lou's profile" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -57,27 +47,27 @@ export default function LouProfile() {
           <div className="flex items-center">
             <h1 className="text-3xl font-bold text-white">Lou</h1>
           </div>
-          <p className="text-gray-300 mt-1">unioncrax_official • he/they - femboy</p>
+          <p className="text-gray-400 mt-1">unioncrax_official • he/they - femboy</p>
 
           {/* Detailed Description Section */}
-          <div className="mt-8 bg-[#181818] p-6 rounded-lg">
-            <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-              OK. How about now?
-              Next week is better.
-            </p>
+          <div className="mt-8 bg-[#2b2d31] p-6 rounded-lg">
+            <h2 className="text-xl font-semibold mb-4 text-white">About Me</h2>
+            <p className="text-gray-300 leading-relaxed">OK. How about now?</p>
+            <p className="text-gray-300 mt-4 leading-relaxed">Next week is better.</p>
           </div>
 
-          {/* Video Section */}
+          {/* Video Section - Larger */}
           <div className="mt-8">
-            <div className="bg-[#181818] rounded-lg overflow-hidden">
+            <div className="bg-[#2b2d31] rounded-lg overflow-hidden">
               {!isPlaying ? (
                 <div
-                  className="relative aspect-video bg-black cursor-pointer group"
+                  className="relative w-full aspect-video bg-black cursor-pointer group"
                   onClick={handlePlayVideo}
+                  style={{ maxHeight: "80vh" }}
                 >
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                      <Play size={36} className="text-white ml-1" />
+                    <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+                      <Play size={48} className="text-white ml-1" />
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
@@ -85,7 +75,7 @@ export default function LouProfile() {
                   </div>
                 </div>
               ) : (
-                <div className="aspect-video bg-black">
+                <div className="w-full" style={{ maxHeight: "80vh" }}>
                   <video
                     ref={videoRef}
                     autoPlay
@@ -94,6 +84,7 @@ export default function LouProfile() {
                     className="w-full h-full object-contain"
                     src="https://files.catbox.moe/s9f654.mp4"
                     onEnded={() => setIsPlaying(false)}
+                    style={{ maxHeight: "80vh" }}
                   />
                 </div>
               )}
