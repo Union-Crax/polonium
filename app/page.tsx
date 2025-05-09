@@ -39,7 +39,7 @@ export default function ExpiryCountdown() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      ctx.fillStyle = "rgba(255, 255, 255, 0.3)"
+      ctx.fillStyle = "rgba(255, 255, 255, 0.7)"
       ctx.font = `${fontSize}px monospace`
 
       for (let i = 0; i < drops.length; i++) {
@@ -99,7 +99,7 @@ export default function ExpiryCountdown() {
     <div className="relative min-h-screen overflow-hidden">
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full -z-10" />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/95 -z-5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 -z-5" />
 
       <div className="container max-w-4xl mx-auto px-4 py-16 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-12">

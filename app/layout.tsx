@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Polonium games",
+  title: "Polonium Games",
   description: "This website is no longer maintained and will expire soon.",
     generator: 'v0.dev'
 }
@@ -29,6 +29,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-import './globals.css'
