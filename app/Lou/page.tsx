@@ -16,7 +16,6 @@ export default function LouProfile() {
   }
 
   useEffect(() => {
-    // Preload the video
     if (videoRef.current) {
       videoRef.current.load()
     }
@@ -25,9 +24,17 @@ export default function LouProfile() {
   return (
     <div className="min-h-screen bg-[#121212] text-white">
       {/* Banner Image */}
-      <div className="w-full h-60 bg-cover bg-center relative overflow-hidden"
-           style={{ backgroundImage: 'url("https://files.catbox.moe/jcsjil.gif")' }}>
-        <div className="absolute inset-0 opacity-40 bg-black"></div>
+      <div
+        className="w-full"
+        style={{
+          height: "240px",
+          backgroundImage: 'url("https://files.catbox.moe/jcsjil.gif")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-40"></div>
       </div>
 
       {/* Profile Content */}
@@ -54,7 +61,7 @@ export default function LouProfile() {
 
           {/* Detailed Description Section */}
           <div className="mt-8 bg-[#181818] p-6 rounded-lg">
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-300 leading-relaxed whitespace-pre-line">
               OK. How about now?
               Next week is better.
             </p>
@@ -64,7 +71,10 @@ export default function LouProfile() {
           <div className="mt-8">
             <div className="bg-[#181818] rounded-lg overflow-hidden">
               {!isPlaying ? (
-                <div className="relative aspect-video bg-black cursor-pointer group" onClick={handlePlayVideo}>
+                <div
+                  className="relative aspect-video bg-black cursor-pointer group"
+                  onClick={handlePlayVideo}
+                >
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
                       <Play size={36} className="text-white ml-1" />
