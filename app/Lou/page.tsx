@@ -26,7 +26,7 @@ export default function LouProfile() {
       {/* Banner Image - GIF */}
       <div className="w-full h-60 relative overflow-hidden">
         <img
-          src="https://files.catbox.moe/jcsjil.gif"
+          src="https://files.catbox.moe/6l34wa.gif"
           alt="Banner"
           className="w-full h-full object-cover"
           style={{ width: "100%", height: "240px" }}
