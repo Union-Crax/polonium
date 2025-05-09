@@ -6,6 +6,7 @@ import { Play } from "lucide-react"
 export default function LouProfile() {
   const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [windowWidth, setWindowWidth] = useState(0)
 
   const handlePlayVideo = () => {
     setIsPlaying(true)
@@ -15,32 +16,55 @@ export default function LouProfile() {
   }
 
   useEffect(() => {
+    // Set initial window width
+    setWindowWidth(window.innerWidth)
+
+    // Update window width on resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+
     // Preload the video
     if (videoRef.current) {
       videoRef.current.load()
     }
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
   }, [])
+
+  // Calculate banner height based on aspect ratio
+  const bannerHeight = Math.min(240, windowWidth * (240 / 600))
 
   return (
     <div className="min-h-screen bg-[#1e1f22] text-white">
-      {/* Banner Image - Refined to eliminate black borders and show all text */}
-      <div
-        className="w-full relative overflow-hidden"
-        style={{
-          paddingBottom: "40%", // This creates a 5:2 aspect ratio container (600:240)
-          maxHeight: "240px",
-          background: "#000",
-        }}
-      >
-        <img
-          src="https://files.catbox.moe/jcsjil.gif"
-          alt="Banner"
-          className="absolute top-0 left-0 w-full h-full"
+      {/* Banner Image - Direct approach with calculated height */}
+      <div className="w-full flex justify-center items-center bg-black">
+        <div
           style={{
-            objectFit: "cover",
-            objectPosition: "center 30%", // Adjusted to focus on text content
+            width: "100%",
+            height: `${bannerHeight}px`,
+            overflow: "hidden",
+            position: "relative",
           }}
-        />
+        >
+          <img
+            src="https://files.catbox.moe/jcsjil.gif"
+            alt="Banner"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </div>
       </div>
 
       {/* Profile Content */}
@@ -64,9 +88,6 @@ export default function LouProfile() {
             <h2 className="text-xl font-semibold mb-4 text-white">About Me</h2>
             <p className="text-gray-300 leading-relaxed">OK. How about now?</p>
             <p className="text-gray-300 mt-4 leading-relaxed">Next week is better.</p>
-            <p className="text-gray-300 mt-4 leading-relaxed">🇧🇪/🏳‍🌈/Minor</p>
-            <p className="text-gray-300 mt-4 leading-relaxed">Loves to draw</p>
-            <p className="text-gray-300 mt-4 leading-relaxed">Might be a lil gay :3</p>
           </div>
 
           {/* Video Section - Larger */}

@@ -23,23 +23,13 @@ export default function LouProfile() {
 
   return (
     <div className="min-h-screen bg-[#1e1f22] text-white">
-      {/* Banner Image - Refined to eliminate black borders and show all text */}
-      <div
-        className="w-full relative overflow-hidden"
-        style={{
-          paddingBottom: "40%", // This creates a 5:2 aspect ratio container (600:240)
-          maxHeight: "240px",
-          background: "#000",
-        }}
-      >
-        <img
+      {/* Banner Image - Using iframe for exact rendering */}
+      <div className="w-full h-60 bg-black flex justify-center items-center">
+        <iframe
           src="https://files.catbox.moe/jcsjil.gif"
-          alt="Banner"
-          className="absolute top-0 left-0 w-full h-full"
-          style={{
-            objectFit: "cover",
-            objectPosition: "center 30%", // Adjusted to focus on text content
-          }}
+          className="w-full h-full border-0"
+          style={{ maxHeight: "240px" }}
+          title="Banner"
         />
       </div>
 
@@ -64,9 +54,6 @@ export default function LouProfile() {
             <h2 className="text-xl font-semibold mb-4 text-white">About Me</h2>
             <p className="text-gray-300 leading-relaxed">OK. How about now?</p>
             <p className="text-gray-300 mt-4 leading-relaxed">Next week is better.</p>
-            <p className="text-gray-300 mt-4 leading-relaxed">🇧🇪/🏳‍🌈/Minor</p>
-            <p className="text-gray-300 mt-4 leading-relaxed">Loves to draw</p>
-            <p className="text-gray-300 mt-4 leading-relaxed">Might be a lil gay :3</p>
           </div>
 
           {/* Video Section - Larger */}
